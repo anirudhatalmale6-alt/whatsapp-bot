@@ -1,0 +1,36 @@
+services:
+  - type: web
+    plan: free
+    name: msouwout-whatsapp-bot
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Non-secret: this must match the "Verify token" pasted into the Meta webhook config
+      - key: WA_VERIFY_TOKEN
+        value: msouwout_webhook_2026
+      # The number the bot TELLS customers to contact. Not the number the bot
+      # runs on - that is WA_PHONE_NUMBER_ID. Set this the day the SIM swap
+      # happens, or the bot hands out the old number with total confidence.
+      - key: WA_CONTACT_NUMBER
+        value: "+509 4685 9702"
+      # waitlist | live - whether the bot says MsouWout rides are coming soon
+      # or are available now. Jeffery's call, not a code change.
+      - key: MSOUWOUT_LAUNCH_MODE
+        value: waitlist
+      # Secrets — set in the Render dashboard (Environment tab), not in git:
+      - key: WA_PHONE_NUMBER_ID
+        sync: false
+      - key: WA_BUSINESS_ACCOUNT_ID
+        sync: false
+      - key: WA_ACCESS_TOKEN
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
