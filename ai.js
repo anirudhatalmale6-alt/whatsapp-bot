@@ -17,7 +17,10 @@ const CONTACT_NUMBER = process.env.WA_CONTACT_NUMBER || '+509 4685 9702';
    BUSINESS decision, not a code decision, so it is a switch rather than an
    edit - and it stays on `waitlist` until Jeffery says otherwise. */
 const LAUNCH_MODES = {
-  waitlist: 'IMPORTANT: You are in soft-launch / waitlist mode for MsouWout rides. When someone requests a ride, collect their info but let them know the service is launching soon in their area and they\'ll be among the first to know.',
+  /* Jeffery's wording, 20 Sep: "Launching next week". Not "soon" - he has not
+     scheduled a launch date and does not want a promise the system has not
+     earned yet. ⛔ Do not soften or re-time this without asking him. */
+  waitlist: 'IMPORTANT: MsouWout rides are LAUNCHING NEXT WEEK. They are not available to book yet. When someone asks for a ride, take their name and area, tell them MsouWout is launching next week and that they will be among the first to know. Never promise a ride today, and never give a specific launch date beyond "next week".',
   live: 'IMPORTANT: MsouWout rides are LIVE. When someone wants a ride, send them to msouwout.com to order it, and help them through it. Do not tell them the service is still coming.'
 };
 function launchMode() {
